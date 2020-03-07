@@ -10,12 +10,12 @@
 </template>
 
 <script>
-import Twitter from "twitter-lite";
+// import Twitter from "twitter-lite";
 
-const client = new Twitter({
-  consumer_key: "WUDm8KuJMbTfvEWMo4YxDxJkA",
-  consumer_secret: "2JJyKdylCY0bqWv8EFjoSGvKYsDz4wl7EceuSqbVt09bl5CSze"
-});
+// const client = new Twitter({
+//   consumer_key: "WUDm8KuJMbTfvEWMo4YxDxJkA",
+//   consumer_secret: "2JJyKdylCY0bqWv8EFjoSGvKYsDz4wl7EceuSqbVt09bl5CSze"
+// });
 
 export default {
   // mounted() {
