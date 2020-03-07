@@ -1,0 +1,23 @@
+{
+  "name": "facebook-hackathon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thammarith/facebook-hackathon.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thammarith/facebook-hackathon/issues"
+  },
+  "homepage": "https://github.com/thammarith/facebook-hackathon#readme",
+  "dependencies": {
+    "twitter-lite": "^0.9.4"
+  }
+}
