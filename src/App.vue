@@ -10,24 +10,24 @@
 </template>
 
 <script>
-// import Twitter from "twitter-lite";
+import Twitter from "twitter-lite";
 
-// const client = new Twitter({
-//   consumer_key: "WUDm8KuJMbTfvEWMo4YxDxJkA",
-//   consumer_secret: "2JJyKdylCY0bqWv8EFjoSGvKYsDz4wl7EceuSqbVt09bl5CSze"
-// });
+const client = new Twitter({
+  consumer_key: "WUDm8KuJMbTfvEWMo4YxDxJkA",
+  consumer_secret: "2JJyKdylCY0bqWv8EFjoSGvKYsDz4wl7EceuSqbVt09bl5CSze"
+});
 
 export default {
-  // mounted() {
-  //   client
-  //     .getRequestToken("http://localhost:8080/callback")
-  //     .then(res =>
-  //       console.log({
-  //         reqTkn: res.oauth_token,
-  //         reqTknSecret: res.oauth_token_secret
-  //       })
-  //     )
-  //     .catch(console.error);
-  // }
+  mounted() {
+    client
+      .getRequestToken("https://infallible-kowalevski-58a506.netlify.com")
+      .then(res =>
+        console.log({
+          reqTkn: res.oauth_token,
+          reqTknSecret: res.oauth_token_secret
+        })
+      )
+      .catch(console.error);
+  }
 };
 </script>
