@@ -5,6 +5,7 @@
       <router-link to="/about">About</router-link>
     </div>
     <router-view /> -->
+    test
   </div>
 </template>
 
@@ -17,16 +18,16 @@ const client = new Twitter({
 });
 
 export default {
-  mounted() {
-    client
-      .getRequestToken("http://localhost:8080/callback")
-      .then(res =>
-        console.log({
-          reqTkn: res.oauth_token,
-          reqTknSecret: res.oauth_token_secret
-        })
-      )
-      .catch(console.error);
-  }
+  // mounted() {
+  //   client
+  //     .getRequestToken("http://localhost:8080/callback")
+  //     .then(res =>
+  //       console.log({
+  //         reqTkn: res.oauth_token,
+  //         reqTknSecret: res.oauth_token_secret
+  //       })
+  //     )
+  //     .catch(console.error);
+  // }
 };
 </script>
