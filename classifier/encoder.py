@@ -1,8 +1,7 @@
-# encoder.py
-
 from torch import nn
-from classifier.utils import clones
+
 from classifier.sublayers import LayerNorm, SubLayerOutput
+from classifier.utils import clones
 
 
 class Encoder(nn.Module):
