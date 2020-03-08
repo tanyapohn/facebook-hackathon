@@ -3,28 +3,14 @@ import spacy
 from torchtext import data
 
 
-def parse_label(label: str) -> int:
-    """
-    Get the actual labels from label string
-    :param label: labels of the form '__label__2'
-    :return label (int) : integer value corresponding to label string
-    """
-    return int(label.strip()[-1])
-
-
 def get_pandas_df(filename: str) -> pd.DataFrame:
     """
     Load the data into Pandas.DataFrame object
     This will be used to convert data to torchtext object
 
     """
-    with open(filename, 'r') as datafile:
-        data = [line.strip().split(',', maxsplit=1) for line in datafile]
-        data_text = list(map(lambda x: x[1], data))
-        data_label = list(map(lambda x: parse_label(x[0]), data))
-
-    full_df = pd.DataFrame({"text": data_text, "label": data_label})
-    return full_df
+    df = pd.read_csv(filename)
+    return df
 
 
 class Dataset(object):

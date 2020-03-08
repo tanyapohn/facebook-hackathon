@@ -24,6 +24,24 @@ class PositionWiseFeedForward(nn.Module):
         return self.w_2(self.dropout(F.relu(self.w_1(x))))
 
 
+class TextSentiment(nn.Module):
+    def __init__(self, vocab_size, embed_dim, num_class):
+        super().__init__()
+        self.embedding = nn.EmbeddingBag(vocab_size, embed_dim, sparse=True)
+        self.fc = nn.Linear(embed_dim, num_class)
+        self.init_weights()
+
+    def init_weights(self):
+        initrange = 0.5
+        self.embedding.weight.data.uniform_(-initrange, initrange)
+        self.fc.weight.data.uniform_(-initrange, initrange)
+        self.fc.bias.data.zero_()
+
+    def forward(self, text, offsets):
+        embedded = self.embedding(text, offsets)
+        return self.fc(embedded)
+
+
 class Transformer(nn.Module):
     def __init__(self, config, src_vocab):
         super(Transformer, self).__init__()
@@ -52,7 +70,7 @@ class Transformer(nn.Module):
         )
 
         # Softmax non-linearity
-        self.softmax = nn.Softmax()
+        self.softmax = nn.Softmax(dim=1)
 
     def forward(self, x):
         embedded_sents = self.src_embed(
@@ -89,10 +107,10 @@ class Transformer(nn.Module):
             self.optimizer.zero_grad()
             if torch.cuda.is_available():
                 x = batch.text.cuda()
-                y = (batch.label - 1).type(torch.cuda.LongTensor)
+                y = batch.label.type(torch.cuda.LongTensor)
             else:
                 x = batch.text
-                y = (batch.label - 1).type(torch.LongTensor)
+                y = batch.label.type(torch.LongTensor)
             y_pred = self.__call__(x)
             loss = self.loss_op(y_pred, y)
             loss.backward()
