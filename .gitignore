@@ -1,6 +1,7 @@
 __pycache__/
 .idea/
 data/
+model/
 .ipynb_checkpoints
 *.ipynb
 *.pyc
