@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/thammarith/facebook-hackathon#readme",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "twitter-lite": "^0.9.4"
   }
 }
