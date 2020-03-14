@@ -94,7 +94,7 @@ function main() {
 }
 
 function keepLoadingTweets() {
-  setInterval(main, 10 /* seconds */ * 1000 /* ms */);
+  setInterval(main, 60 /* seconds */ * 1000 /* ms */);
 }
 
 keepLoadingTweets();
