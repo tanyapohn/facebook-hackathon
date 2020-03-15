@@ -22,7 +22,7 @@ app = Flask(__name__)
 
 device = torch.device('cpu')
 weights_file = os.path.join(MODEL_PATH, 'model.pth')
-vocab = torch.load(os.path.join(MODEL_PATH, 'vocab'))
+vocab = torch.load(os.path.join(MODEL_PATH, 'vocab.pth'))
 model = TextSentiment(VOCAB_SIZE, EMBED_DIM, NUM_CLASS).to(device)
 model.load_state_dict(torch.load(weights_file, map_location=device))
 model.eval()
