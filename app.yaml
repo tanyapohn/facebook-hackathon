@@ -1,0 +1,17 @@
+runtime: python
+env: flex
+
+runtime_config:
+  python_version: 3
+
+entrypoint: python main.py
+
+instance_class: F4
+resources:
+  cpu: 2
+  memory_gb: 8
+  disk_size_gb: 20
+  volumes:
+    - name: ramdisk1
+      volume_type: tmpfs
+      size_gb: 2

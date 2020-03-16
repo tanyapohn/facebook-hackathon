@@ -9,7 +9,7 @@ from classifier.model import TextSentiment
 VOCAB_SIZE = 4303416
 EMBED_DIM = 32
 NUM_CLASS = 2
-ROOT = os.path.dirname(os.path.dirname(__file__))
+ROOT = os.path.dirname(__file__)
 MODEL_PATH = os.path.join(ROOT, 'model')
 
 
@@ -22,7 +22,6 @@ app = Flask(__name__)
 
 device = torch.device('cpu')
 weights_file = os.path.join(MODEL_PATH, 'model.pth')
-vocab = torch.load(os.path.join(MODEL_PATH, 'vocab.pth'))
 model = TextSentiment(VOCAB_SIZE, EMBED_DIM, NUM_CLASS).to(device)
 model.load_state_dict(torch.load(weights_file, map_location=device))
 model.eval()
@@ -39,6 +38,7 @@ def predict(text, model, vocab, n_grams):
 
 @app.route('/get_result', methods=['GET', 'POST'])
 def get_result():
+    vocab = torch.load(os.path.join(MODEL_PATH, 'vocab.pth'))
     content = request.get_json()
     key = content['id']
     text = content['text']
@@ -52,4 +52,4 @@ def get_result():
 
 
 if __name__ == "__main__":
-    app.run(port=4555, debug=True)
+    app.run(host='0.0.0.0', port=8080, debug=True)
